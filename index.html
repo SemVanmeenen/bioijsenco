@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="INDEX, FOLLOW">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="description" content="Ijs&amp;Co">
+
+	<script type="text/javascript">
+	/* For the moment, only language available is nl
+		var lang = navigator.language || navigator.userLanguage;
+		if (lang.toLowerCase() == 'nl' || lang.toLowerCase().indexOf("nl-") === 0){
+			document.documentElement.lang = 'nl';
+		}
+		else{
+			document.documentElement.lang = 'en';
+		}
+	*/
+	document.documentElement.lang = 'nl';
+	</script>
+	
+    <title>Ijs&amp;Co</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="assets/images/other_images/favicon.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="assets/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- vegas bg -->
+    <link href="assets/js/vegas/jquery.vegas.min.css" rel="stylesheet">
+    <!-- owl carousel css -->
+    <link href="assets/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="assets/js/owl-carousel/owl.theme.css" rel="stylesheet">
+    <link href="assets/js/owl-carousel/owl.transitions.css" rel="stylesheet">
+    <!-- intro animations -->
+    <link href="assets/js/wow/animate.css" rel="stylesheet">
+    <!-- font awesome -->
+    <link href="assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- lightbox -->
+    <link href="assets/js/lightbox/css/lightbox.css" rel="stylesheet">
+
+    <!-- styles for this template -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+
+    <!-- place your extra custom styles in this file -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+	
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <style>
+		/* In the original theme, font size is default 1.0 em, 
+		   for 768px min-width we got 1.18 em and for 992px it was 1.44 em.
+		   Unfortunately, the 1.44em is tad too big so I'm fixing it here.
+		*/
+		@media (min-width: 768px)
+		{
+			#main-content .feature-text {
+				font-size: 1.05em;
+			}
+		}		
+		
+		@media (min-width: 992px)
+		{
+			#main-content .feature-text {
+				font-size: 1.10em;
+			}
+		}
+		
+		@media (min-width: 1050px)
+		{
+			#main-content .feature-text {
+				font-size: 1.15em;
+			}
+		}
+		
+		/* All text bold for more visibility */
+		html 
+		{
+			font-weight:bold;
+		}
+		
+		/* Above rule doesn't override the font-weight for the menu and the buttons. This fixed that. */
+		a.btn-lg 
+		{
+			font-weight:bold;
+		}
+		
+		span.menuItemSpan
+		{
+			font-weight: bold;
+		}
+		
+		/* In the original theme, a selected menuitem was set to bold. As bold is now the default, we must make it bolder off course. */
+		li.menu-item.active span.menuItemSpan
+		{
+			font-weight: bolder;
+		}
+	
+		/* Override styles of the javascript frameworks to underline and blue for unvisited
+		and purple for visited links. However, only for links for which we add our class because 
+		some links in the page are actually styled as button by the frameworks.*/
+
+		a.linkDefaultStyle:link,
+		a.linkDefaultStyle:visited,
+		a.linkDefaultStyle:hover,
+		a.linkDefaultStyle:active {
+			color : White;
+			text-decoration:underline;
+			font-weight: 900;
+			font-style: italic;
+			font-size: 103%;
+		}
+		
+		/* Center all ULs for smartphones */
+		@media (max-width: 767px) {
+		    ul
+			{	
+				display: table; 
+				margin: 0 auto; 
+			}
+		}
+		
+		/* When clicking the menu items, ensure that the title of a section, scrolls to the top of 
+		the page instead of centering the whole section in the middle-right of the window.
+		*/
+		
+	    #main-content .section-wrapper .content-wrapper
+		{
+			bottom:auto;
+		}
+		
+		/* Center captions of the different carrousels underneath the pictures and float the pictures 
+		   to the right in case of a PC or center them in case of a smartphone
+		*/
+		.CarrouselText
+		{
+			text-align:center
+		}
+				
+		@media (min-width: 768px) {
+			.feature-col
+			{
+				float:left
+			}
+		}
+		@media (max-width: 767px) {
+			.feature-col
+			{
+				display: table; 
+		        margin: 0 auto;
+			}
+		}
+
+		/* Languages */
+		/* Hide all dutch spans by default */
+		span[lang="nl"]
+		{
+			display:none
+		}
+		
+		/* Show the dutch spans and hide the english ones if the root lang is dutch */
+		:lang(nl) span:lang(nl) 
+		{
+			/* Note : don't use initial. In IE it doesn't work although it would be more correct to use it.*/
+			display:inline;
+		}
+		
+		:lang(nl) span:lang(en) 
+		{
+			display:none;
+		}	
+		
+		/* Use same system for button languages i.e. default is english regardless of the root language */
+		#btn-lang-en
+		{
+			font-weight:bolder;
+			font-family:"open_sansbold",sans-serif;
+		}
+		
+		#btn-lang-en:lang(nl) 
+		{
+			font-weight:inherit;
+			font-family:inherit;
+		}
+		
+		#btn-lang-nl:lang(nl) 
+		{
+			font-weight:bolder;
+			font-family:"open_sansbold",sans-serif;
+		}		
+		
+		.btn-lang 
+		{
+			cursor:pointer
+		}
+
+		.div-lang 
+		{
+			display:block;
+			cursor:default;
+		}	
+		
+		/* Bigger menu and logo */
+		
+		@media (min-width: 768px) 
+		{
+			#left-sidebar 
+			{
+				min-width: 260px;
+			}
+			#left-sidebar #main-menu
+			{
+				font-size : 1.10em
+			}			
+			.btn-lang 
+			{
+				font-size : 1.05em
+			}
+		}
+	
+		@media (min-width: 992px)
+		{
+			#left-sidebar 
+			{
+				min-width: 285px;
+			}
+			#left-sidebar #main-menu
+			{
+				font-size : 1.15em
+			}			
+			.btn-lang 
+			{
+				font-size : 1.10em
+			}
+		}
+		
+		@media (min-width: 1050px)
+		{
+			#left-sidebar 
+			{
+				min-width: 310px;
+			}
+			#left-sidebar #main-menu
+			{
+				font-size : 1.25em
+			}			
+			.btn-lang 
+			{
+				font-size : 1.20em
+			}
+		}
+		
+		#left-sidebar .logo img
+		{
+			max-width: 95%;
+		}
+		
+		#left-sidebar div.logo
+		{
+			padding-bottom:0px;
+		}
+		
+		/* Hide the read more buttons for media with small screen estate. They're useless there */
+		@media (max-width: 767px)
+		{
+			.ReadMoreButtons
+			{
+				display:none;
+			}
+		}
+		
+		/* Right-align table with prices for PCs within the ul of the different flavors, center for smartphones.
+		   Also, the th must be a bit to the left of the other tds in the table, acting as a heading.
+		*/
+		@media (min-width: 768px) {
+			table.tablePrijzen
+			{
+				margin-right: auto;
+			}
+		}		
+		
+		@media (max-width: 767px)
+		{
+			table.tablePrijzen
+			{
+				margin-left: auto;
+				margin-right: auto;
+			}
+			ul.ulFlavors li.liFlavor
+			{
+				margin-left: 40%;
+			}
+		}
+		
+		table.tablePrijzen tr td
+		{
+			text-align: left;
+		}
+		
+		table.tablePrijzen tr td:first-child
+		{
+			padding-left:1em;
+		}
+		
+		table.tablePrijzen tr th
+		{
+			padding-bottom:1em;
+		}
+		
+		li.liTablePrijzen 
+		{
+			list-style-type:none;
+			text-align:left;
+			margin-top:1em;
+			margin-bottom:1em;
+			margin-left:-1em;
+		    white-space: nowrap;
+		}
+		
+		/* Change a li item in a ul into a fake subheader */
+		li.liFakeSubHeader
+		{
+			list-style-type:none;
+			text-align:left;
+			margin-top:1em;
+			margin-bottom:1em;
+			margin-left:-1em;
+		    white-space: nowrap;
+		}
+		
+		/* Float article with fotos to the right */
+		article.fotos
+		{
+			float:right;
+		}
+	</style>
+	
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+	
+	<script>
+		//IE throws a JS error if you click on a language link before the changeLanguage function
+		//exists
+		var waitForExistenceChangeLanguageCounter = 0;
+      	function changeLanguageDelayedIfNecessary (lang){
+			if (typeof window.changeLanguage === "function") { 
+				changeLanguage(lang);
+			}
+			else{
+				waitForExistenceChangeLanguageCounter = 
+					waitForExistenceChangeLanguageCounter + 1;
+				if (waitForExistenceChangeLanguageCounter < 50){
+					setTimeout(function(){ changeLanguageDelayed(lang); }, 100);
+				}
+			}
+		}
+	</script>
+  </head>
+
+  <body data-default-background-img="assets/images/other_images_ijsandco/backgrounds/5.jpg" data-overlay="true" data-overlay-opacity="0.35">
+
+    <!-- Outer Container -->
+    <div id="outer-container">
+
+      <!-- Left Sidebar -->
+      <section id="left-sidebar">
+        
+        <div class="logo">
+          <a href="#info" class="link-scroll"><img src="assets/images/other_images_ijsandco/logo.png" alt="Ijs&amp;Co"></a>
+		</div><!-- .logo -->
+
+        <!-- Menu Icon for smaller viewports -->
+        <div id="mobile-menu-icon" class="visible-xs" onClick="toggle_main_menu();"><span class="glyphicon glyphicon-th"></span></div>
+
+        <ul id="main-menu">
+          <li id="menu-item-info" class="menu-item scroll"><a href="#info"><span lang="nl" class="menuItemSpan">Info</span></a></li>
+          <li id="menu-item-bioijs" class="menu-item scroll"><a href="#bioijs"><span lang="nl" class="menuItemSpan">Bio-Ijs</span></a></li>
+          <li id="menu-item-contact" class="menu-item scroll"><a href="#contact"><span lang="nl" class="menuItemSpan">Contact</span></a></li>
+          <li id="menu-item-feesten" class="menu-item scroll"><a href="#feesten"><span lang="nl" class="menuItemSpan">Feesten</span></a></li>
+          <li id="menu-item-fotos" class="menu-item scroll fotos"><a href="#fotos"><span lang="nl" class="menuItemSpan">Foto's</span></a></li>
+        </ul><!-- #main-menu -->
+
+      </section><!-- #left-sidebar -->
+      <!-- end: Left Sidebar -->
+
+      <section id="main-content" class="clearfix">
+        
+        <article id="info" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images_ijsandco/backgrounds/1.jpg">
+          <div class="content-wrapper clearfix wow fadeInDown" data-wow-delay="0.3s">
+            <div class="col-sm-10 col-md-9 pull-right">
+
+                <section class="feature-text">
+				  <h3><span lang="nl">Info</span></h3>
+				  
+                  <p><span lang="nl">
+				               Ons ijs is afkomstig van een gecertificeerde (bio-garantie) bioboerderij. Een bedrijf dat 
+							   reeds verschillende jaren (opstart&nbsp;1998) op een biologische en ecologische manier zuivere
+							   bio&#8288;-&#8288;producten produceert. 
+				     </span>
+				  </p>
+				  <p><span lang="nl">
+				               Samen met koeien waarmee verschillende zuivelproducten kunnen worden geproduceerd,
+							   verzorgt men ook varkens, schapen en runderen bedoeld om de vleesproductie. Hiervoor worden 
+							   eigen veevoeders verbouwd. 
+				     </span>
+				  </p>
+				  <p><span lang="nl">
+				               Een uitgebreide biogroententuin vervolledigt de boerderijactiviteit.
+				     </span>
+				  </p>					
+				  <p class="ReadMoreButtons">
+						<a href="#bioijs" class="link-scroll btn btn-outline-inverse btn-lg">
+							<span lang="nl">Lees Meer</span>
+						</a>
+				    </p>
+				</section>
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+        <article id="bioijs" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images_ijsandco/backgrounds/2.jpg">
+          <div class="content-wrapper clearfix wow fadeInDown" data-wow-delay="0.3s">
+            <div class="col-sm-10 col-md-9 pull-right">
+                <section class="feature-text">
+				  <h3><span lang="nl">Bio-Ijs</span></h3>
+                  <ul>
+					<li class="liFakeSubHeader"><span lang="nl">Basis-samenstelling :</span>
+					</li>
+					<li><span lang="nl">melk<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">boter<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">rietsuiker<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">eierdooiers<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">tarwestroop<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">magere melkpoeder<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">johannesbroodpitmeel<sup>1</sup></span>
+					</li>
+					<li class="liFakeSubHeader"><span lang="nl">en naargelang de smaak :</span>
+					</li>
+				  <!--</ul>
+				  <p><span lang="nl">en naargelang de smaak :</span>
+                  <ul>-->
+					<li><span lang="nl">vanille<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">chocolade<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">koffiepoeder<sup>1</sup></span>
+					</li>
+					<li><span lang="nl">enz.</span>
+					</li>
+				  </ul>
+				  <p><span lang="nl"><sup>1</sup> : product van biologische oorsprong</span>
+				  <p class="ReadMoreButtons">
+						<a href="#contact" class="link-scroll btn btn-outline-inverse btn-lg">
+							<span lang="nl">Lees Meer</span>
+						</a>
+				    </p>
+				</section>
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+		<article id="contact" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images_ijsandco/backgrounds/3.jpg">
+          <div class="content-wrapper clearfix wow fadeInDown" data-wow-delay="0.3s">
+            <div class="col-sm-10 col-md-9 pull-right">
+                <section class="feature-text">
+				  <h3><span lang="nl">Contact</span></h3>
+				  <p><span lang="nl">Bio-ijs & Co<br/>
+				                     B&amp;B Bonvena
+					 </span>
+				  </p>
+				  <p><span lang="nl">P/a Regine Vanhastel<br/>
+				                     DREVE 18<br/>
+									 8720 DENTERGEM
+					 </span>
+				  </p>
+				  <p><span lang="nl">Geert 0476&nbsp;277&nbsp;496<br/>
+				                     <a class="linkDefaultStyle" href="mailto:geertvanmeenen@hotmail.com">geertvanmeenen@hotmail.com</a>
+					 </span>
+				  </p>
+				  <p class="ReadMoreButtons">
+						<a href="#feesten" class="link-scroll btn btn-outline-inverse btn-lg">
+							<span lang="nl">Lees Meer</span>
+						</a>
+				  </p>
+				</section>
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+		
+        <article id="feesten" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images_ijsandco/backgrounds/4.jpg">
+          <div class="content-wrapper clearfix wow fadeInDown" data-wow-delay="0.3s">
+            <div class="col-sm-10 col-md-9 pull-right">
+                
+				<section class="feature-text">
+					<h3><span lang="nl">Feesten</span></h3>
+					
+					<p><span lang="nl">Wenst u ons schepijs op uw verjaardagsfeest, geboorteborrel, schoolfeest,
+					                   jubileum, sneukeltocht, bedrijfsdag, open-deur-dag, vereniging, sfeerinitiatief, enz.</span>
+					</p>
+				    <p><span lang="nl">Voor prijsopgave neem <a href="#contact" class="link-scroll">contact</a><span lang="nl">: 0476&nbsp;277&nbsp;496 of
+				                     <a class="linkDefaultStyle" href="mailto:geertvanmeenen@hotmail.com">geertvanmeenen@hotmail.com</a></span><br/>
+									 Vervoerkosten : 10 km gratis, verder à 0,35 euro/km.
+					   </span>
+					</p>
+				    <p class="ReadMoreButtons">
+						<a href="#fotos" class="link-scroll btn btn-outline-inverse btn-lg">
+								<span lang="nl">Lees Meer</span>
+						</a>
+					 </p>
+			  </section>
+              <!-- End: Section content to edit -->
+
+            </div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->  
+
+        <article id="fotos" class="section-wrapper clearfix" data-custom-background-img="assets/images/other_images_ijsandco/backgrounds/5.jpg">
+          <div class="content-wrapper clearfix wow fadeInDown" data-wow-delay="0.3s">
+            <div class="col-sm-10 col-md-9 pull-right">
+			    <section class="feature-text">
+					<h3><span lang="nl">Foto's</span></h3>
+					
+						<!-- feature columns -->
+						<section class="feature-columns row clearfix">
+							<article class="feature-col col-md-4 fotos">
+								<a href="" onclick="populate_and_open_modal(event, 'modal-content-3', '', 'full-size');" class="thumbnail linked">
+								  <div class="image-container">
+									<img data-img-src="assets/images/other_images_ijsandco/fotos/01_thumb.jpg" class="lazy item-thumbnail" alt="Foto's">
+								  </div>
+								  <div class="caption">
+									<h5 class="CarrouselText">Foto's</h5>
+								  </div><!-- .caption -->
+								</a><!-- .thumbnail -->
+
+								<div class="content-to-populate-in-modal" id="modal-content-3">
+								  <!-- alt image slider inside popup -->
+								  <div id="unique-id-for-alt-image-slider-Environment" class="owl-carousel popup-alt-image-gallery">
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/01.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/01_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/02.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/02_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/03.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/03_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/04.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/04_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/05.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/05_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/06.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/06_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/07.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/07_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/08.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/08_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/09.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/09_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/10.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/10_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/11.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/11_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/12.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/12_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/13.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/13_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/14.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/14_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/15.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/15_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/16.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/16_thumb.jpg"></a></div>
+									<div class="item"><a href="assets/images/other_images_ijsandco/fotos/17.jpg" data-lightbox="popup-alt-gallery3"><img class="lazyOwl" data-src="assets/images/other_images_ijsandco/fotos/17_thumb.jpg"></a></div>
+								 </div>
+								</div><!-- #modal-content-4 -->
+							</article>
+						</section><!-- end: .feature-columns -->
+				</section>
+			</div><!-- .col-sm-10 -->
+          </div><!-- .content-wrapper -->
+        </article><!-- .section-wrapper -->
+
+      </section><!-- #main-content -->
+
+      <!-- Footer -->
+      <section id="footer">
+
+        <!-- Go to Top -->
+        <div id="go-to-top" onclick="scroll_to_top();"><span class="icon glyphicon glyphicon-chevron-up"></span></div>
+
+        <!-- copyright text -->
+        <div class="footer-text-line">&copy; 2017 Twilli | Air</div>
+      </section>
+      <!-- end: Footer -->      
+
+    </div><!-- #outer-container -->
+    <!-- end: Outer Container -->
+
+    <!-- Modal -->
+    <!-- DO NOT MOVE, EDIT OR REMOVE - this is needed in order for popup content to be populated in it -->
+    <div class="modal fade" id="common-modal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="modal-body clearfix">
+          </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+      </div><!-- .modal-dialog -->
+    </div><!-- .modal -->    
+
+    <!-- Javascripts
+    ================================================== -->
+
+    <!-- Jquery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Easing - for transitions and effects -->
+    <script src="assets/js/jquery.easing.1.3.js"></script>
+
+    <!-- background image strech script -->
+    <script src="assets/js/vegas/jquery.vegas.min.js"></script>
+
+    <!-- detect mobile browsers -->
+    <script src="assets/js/detectmobilebrowser.js"></script>
+
+    <!-- detect scrolling -->
+    <script src="assets/js/jquery.scrollstop.min.js"></script>
+
+    <!-- owl carousel js -->
+    <script src="assets/js/owl-carousel/owl.carousel.min.js"></script>
+
+    <!-- lightbox js -->
+    <script src="assets/js/lightbox/js/lightbox.min.js"></script>
+
+    <!-- intro animations -->
+    <script src="assets/js/wow/wow.min.js"></script>
+
+    <!-- responsive videos -->
+    <script src="assets/js/jquery.fitvids.js"></script>
+
+    <!-- Custom functions for this theme -->
+    <script src="assets/js/functions.js"></script>
+	
+    <!-- Must be called before we load assets/js/initialise-functions.js otherwise this code (copied and adpated from that same file)   
+	     will be ignored in favor of that the code in that initialise-functions.js file. 
+		 Will allow text to appear next to the galleries instead of alwyas underneath. 
+	-->
+    <script type="text/javascript">
+	   	$(document).ready(function() {
+		
+			//copied and adapted from assets\js\initialise-functions.js
+			// ------ On Opening Popups ------
+			$('#common-modal').on('shown.bs.modal', function()
+			{
+				$("#common-modal #unique-id-for-alt-image-slider-HenningMankell, #common-modal #unique-id-for-alt-image-slider-AmosOz, #common-modal #unique-id-for-alt-image-slider-Garden").owlCarousel({
+					autoPlay : false,
+					items : 2,
+					stopOnHover : true,
+					navigation: true,
+					paginationSpeed : 500,
+					goToFirstSpeed : 2000,
+					singleItem : false,
+					lazyLoad : true,
+					baseClass : 'hide-bullets',
+					autoHeight : false,
+					transitionStyle: "backSlide",
+					afterLazyLoad : function() {
+						position_modal_at_centre(); // position popup at the centre of the page 
+						modal_backdrop_height($('#common-modal')); // fix backdrop height after all elements inside the popup are loaded
+					}
+				}); 
+			});
+
+		});
+	</script>
+	
+    <script src="assets/js/initialise-functions.js"></script>
+	
+    <script src='fullcalendar/lib/moment.min.js'></script>
+	<script src='fullcalendar/fullcalendar.js'></script>
+	<script src='fullcalendar/lang/nl.js'></script>
+	<script type="text/javascript">
+			window.changeLanguage = function(lang){
+				$(':root').attr('lang', lang);
+			};
+	</script>
+	
+    <!-- IE9 form fields placeholder fix -->
+    <!--[if lt IE 9]>
+    <script>contact_form_IE9_placeholder_fix();</script>
+    <![endif]-->  
+
+  </body>
+</html>
